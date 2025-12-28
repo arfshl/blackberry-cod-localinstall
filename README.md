@@ -1,5 +1,5 @@
 # Overview
-I find that java-based BlackBerry OS (before 10) can theoritically install .cod files without BlackBerry Desktop Manager with just .jad metadata and .cod application file, here's how:
+I recently find that java-based BlackBerry OS (before 10) can theoritically install .cod files without BlackBerry Desktop Manager with just .jad metadata and .cod application file, here's how:
 
 # Java Application Descriptor (.jad) file structure used by BlackBerry
 According to Wikipedia, [Java Application Descriptor](https://en.wikipedia.org/wiki/JAD_(file_format)) (JAD) files describe the MIDlets (Java ME applications) that are distributed as JAR files. But in Blackberry OS, instead of .jar files, this file is used for describing and distributing .cod files. This is an example of BlackBerry .jad files, Containing Opera Mini 8 information and distribution URLs
@@ -58,3 +58,56 @@ OM-Upgrade: u=A2Nn4v0ndf3DwowkXkCiyaev8Uq4qlE=
 
 #### Common Structure
 
+MIDlet-Name = Opera Mini
+Identifies the application name shown to the user.
+
+MIDlet-Version = 8.0
+Indicates the application version.
+
+MIDlet-Vendor = Opera Software ASA
+Specifies the software publisher.
+
+MIDlet-Description = Opera Mini
+Short description of the MIDlet.
+
+MIDlet-Jar-URL
+URL used to download the MIDlet JAR file.
+
+MIDlet-Jar-Size
+Size of the JAR file in bytes.
+
+MIDlet-Info-URL
+Website providing information about the MIDlet.
+
+MIDlet-Install-Notify
+URL notified after successful installation.
+
+MicroEdition-Configuration = CLDC-1.0
+Specifies the Java ME configuration required.
+
+MicroEdition-Profile = MIDP-2.0
+Specifies the Java ME profile required.
+
+#### BlackBerry (RIM) Specific Metadata
+
+RIM-COD-URL / RIM-COD-URL-n
+URLs for downloading individual COD modules.
+
+RIM-COD-Size / RIM-COD-Size-n
+Size of each COD module.
+
+RIM-COD-SHA1 / RIM-COD-SHA1-n
+SHA-1 hash used to verify integrity of each COD module.
+
+#### Opera Mobile / Mini Internal Metadata
+
+OM-UA
+User-Agent string used by Opera Mini.
+
+OM-Upgrade
+Internal reference for upgrade handling.
+
+OM-Install-Referrer
+Tracks the installation source or referral
+
+#### And this is the point: we use file:/// pointer as `RIM-COD-URL` allowing local .cod file, either at Internal Storage or SD Card to be installed locally without BlackBerry Desktop Manager
