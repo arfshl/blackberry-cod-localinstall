@@ -111,3 +111,25 @@ OM-Install-Referrer
 Tracks the installation source or referral
 
 #### And this is the point: we use file:/// pointer as `RIM-COD-URL` allowing local .cod file, either at Internal Storage or SD Card to be installed locally without BlackBerry Desktop Manager
+
+We only need this value filled to be a valid .jad file, example:
+
+```
+MIDlet-Name: Opera Mini 4
+MIDlet-Vendor: Opera Software ASA
+MIDlet-Version: 4.5
+RIM-COD-Size: 222424
+RIM-COD-URL: file:///store/home/user/opera-mini-4.5.33868-advanced-en-fw4.2/operette-hifi-en-jsr75.cod
+```
+
+Or if .cod file is from sdcard
+
+```
+MIDlet-Name: Opera Mini 4
+MIDlet-Vendor: Opera Software ASA
+MIDlet-Version: 4.5
+RIM-COD-Size: 222424
+RIM-COD-URL: file:///SDCard/opera-mini-4.5.33868-advanced-en-fw4.2/operette-hifi-en-jsr75.cod
+```
+
+RIM-COD-Size isn't necessarily accurate, but required in a valid value, not random numbers, so if you have .cod sized more than this, using this example wouldn't be break your apps, just replace RIM-COD-URL with your own file location
